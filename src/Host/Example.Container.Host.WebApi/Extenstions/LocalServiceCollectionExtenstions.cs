@@ -1,9 +1,12 @@
 ﻿using Example.Container.Core;
+using OLT.Core;
+using OLT.Extensions.SwaggerGen;
 using Serilog;
 using System.Reflection;
 
 namespace Example.Container.Host.WebApi.Extenstions
 {
+
     public static class LocalServiceCollectionExtenstions
     {
         private static string RunEnvironment => Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "Test";
@@ -39,5 +42,25 @@ namespace Example.Container.Host.WebApi.Extenstions
                 throw;
             }
         }
+
+
+        #region [ Swagger ]
+
+        public static IServiceCollection AddAppSwagger(this IServiceCollection services, bool enabled = false)
+        {
+            return services
+                .AddSwaggerWithVersioning(
+                        new OltSwaggerArgs(new OltOptionsApiVersion())
+                            .WithTitle("Example Container WebApi")
+                            .WithDescription("RESTful API for example container")
+                            .WithSecurityScheme(new OltSwaggerJwtBearerToken())
+                            .WithOperationFilter(new OltDefaultValueFilter())
+                            .WithOperationFilter(new OltCamelCasingOperationFilter())
+                            .Enable(enabled))
+                .AddSwaggerGenNewtonsoftSupport();
+
+        }
+
+        #endregion
     }
 }
