@@ -1,4 +1,4 @@
-namespace Example.Container.WebApi
+namespace Example.Container.Host.WebApi
 {
     public class WeatherForecast
     {
