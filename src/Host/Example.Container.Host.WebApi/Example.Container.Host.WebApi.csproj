@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>4ef2c6bb-0139-4200-a5a8-c5ffdf7aef44</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OLT.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="OLT.AspNetCore.Serilog" Version="7.0.0" />
+    <PackageReference Include="OLT.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="OLT.Extensions.SwaggerGen" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.FastConsole" Version="2.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Example.Container.Core.Config\Example.Container.Core.Config.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Example.Container.Infrastructure.Db\Example.Container.Infrastructure.Db.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Example.Container.Infrastructure.Repos\Example.Container.Infrastructure.Repos.csproj" />
+  </ItemGroup>
+
+</Project>
